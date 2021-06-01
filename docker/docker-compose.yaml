@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  ngnix:
+    image: nginx:stable-alpine
+    networks:
+      - atividade-3
+    container_name: ngnix-atividade-3
+    ports:
+      - 8080:80
+
+  mysql:
+    image: mysql:latest
+    networks:
+      - atividade-3
+    container_name: mysql-atividade-3
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "secret"
+      MYSQL_DATABASE: "teste"
+
+networks:
+  atividade-3:
+    driver: bridge
